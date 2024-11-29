@@ -58,15 +58,6 @@ b as
         
     from customers
 ),
-order_totals as (
-
-    select 
-        order_id,
-        sum(payment_amount) as order_value_dollars
-
-
-),
-
 
 customer_order_history as 
 
@@ -139,7 +130,7 @@ select
     first_order_date,
     order_count,
     total_lifetime_value,
-    round(amount/100.0,2) as order_value_dollars,
+    {{cent_to_dollars('amount',2)}},
     orders.status as order_status
 
 from orders
