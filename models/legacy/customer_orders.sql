@@ -58,6 +58,15 @@ b as
         
     from customers
 ),
+order_totals as (
+
+    select 
+        order_id,
+        sum(payment_amount) as order_value_dollars
+
+
+),
+
 
 customer_order_history as 
 
